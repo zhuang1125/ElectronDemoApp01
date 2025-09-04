@@ -1,14 +1,16 @@
 {
   "name": "my-app",
   "productName": "my-app",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
+    "make-with-yml": "electron-forge make && node generate-latest-yml.js",
     "publish": "electron-forge publish",
+    "publish-with-yml": "electron-forge publish && node generate-latest-yml.js",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],
@@ -24,6 +26,7 @@
     "generateUpdatesFilesForAllChannels": true,
     "updaterCacheDirName": "my-app-updater",
     "win": {
+      "target": "nsis",
       "extraResources": [
         {
           "from": "node_modules/electron/dist/locales",
@@ -39,6 +42,7 @@
     "@electron-forge/maker-deb": "^7.8.3",
     "@electron-forge/maker-rpm": "^7.8.3",
     "@electron-forge/maker-squirrel": "^7.8.3",
+    "@electron-forge/maker-nsis": "^7.8.3",
     "@electron-forge/maker-zip": "^7.8.3",
     "@electron-forge/plugin-auto-unpack-natives": "^7.8.3",
     "@electron-forge/plugin-fuses": "^7.8.3",

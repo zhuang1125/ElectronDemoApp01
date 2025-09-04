@@ -40,6 +40,64 @@ module.exports = {
         });
       });
       
+      // 生成 latest.yml 文件并复制到 IIS 目录
+      const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
+      const version = packageJson.version;
+      
+      // 查找 Squirrel.Windows 构建目录中的 RELEASES 文件
+      const squirrelDir = path.join(__dirname, 'out', 'make', 'squirrel.windows', 'x64');
+      const releasesFile = path.join(squirrelDir, 'RELEASES');
+      
+      if (fs.existsSync(releasesFile)) {
+        // 读取RELEASES文件内容
+        const releasesContent = fs.readFileSync(releasesFile, 'utf8').trim();
+        const lines = releasesContent.split('\n');
+        
+        if (lines.length > 0) {
+          const line = lines[0].trim();
+          const parts = line.split(' ');
+          
+          if (parts.length >= 2) {
+            const sha256 = parts[0];
+            const filename = parts[1];
+            const fileSize = parts[2] || '0';
+            
+            // 计算文件的实际大小
+            let actualFileSize = fileSize;
+            if (fileSize === '0') {
+              const filePath = path.join(squirrelDir, filename);
+              if (fs.existsSync(filePath)) {
+                const stats = fs.statSync(filePath);
+                actualFileSize = stats.size.toString();
+              }
+            }
+            
+            // 生成latest.yml内容
+            const latestYml = `
+version: ${version}
+path: ${filename}
+sha256: ${sha256}
+size: ${actualFileSize}
+releaseDate: '${new Date().toISOString()}'
+`.trim();
+            
+            // 写入latest.yml文件到构建目录
+            const latestYmlPath = path.join(squirrelDir, 'latest.yml');
+            fs.writeFileSync(latestYmlPath, latestYml);
+            
+            // 复制latest.yml到IIS目录
+            const iisLatestYmlPath = path.join(iisPublishDir, 'latest.yml');
+            fs.copyFileSync(latestYmlPath, iisLatestYmlPath);
+            
+            console.log(`✅ 已生成并复制 latest.yml 到 ${iisLatestYmlPath}`);
+            console.log(`📄 latest.yml 内容:`);
+            console.log(latestYml);
+          }
+        }
+      } else {
+        console.warn('⚠️  未找到 RELEASES 文件:', releasesFile);
+      }
+      
       console.log('发布完成到 IIS 目录:', iisPublishDir);
       return makeResults;
     }
