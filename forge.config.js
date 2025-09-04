@@ -2,20 +2,7 @@ const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 require('dotenv').config();
 module.exports = {
-  publishers: [
-    {
-      name: '@electron-forge/publisher-github',
-      config: {
-        repository: {
-          owner: 'zhuang1125',
-          name: 'ElectronDemoApp01'
-        },
-        prerelease: true,
-        createRelease: true,
-        draft: false
-      }
-    }
-  ],
+
   // 添加自定义发布配置到本地 IIS
   hooks: {
     postMake: async (forgeConfig, makeResults) => {
