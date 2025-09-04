@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
