@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "productName": "my-app",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
   "scripts": {
@@ -17,24 +17,6 @@
   "author": {
     "name": "zhangzhuang",
     "email": "zhangzhuang@163.com"
-  },
-  "build": {
-    "publish": {
-      "provider": "generic",
-      "url": "http://localhost/electron-updates"
-    },
-    "generateUpdatesFilesForAllChannels": true,
-    "updaterCacheDirName": "my-app-updater",
-    "win": {
-      "target": "nsis",
-      "extraResources": [
-        {
-          "from": "node_modules/electron/dist/locales",
-          "to": "locales",
-          "filter": ["zh-CN.pak", "en-US.pak"]
-        }
-      ]
-    }
   },
   "license": "MIT",
   "devDependencies": {

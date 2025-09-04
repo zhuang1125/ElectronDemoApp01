@@ -24,7 +24,13 @@
       "Bash(npm search @electron-forge/maker)",
       "Read(/D:\\repo\\demoapp2025090401\\my-app\\out\\make\\squirrel.windows\\x64/**)",
       "Bash(node generate-latest-yml.js)",
-      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)"
+      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)",
+      "Read(/C:\\inetpub\\wwwroot\\electron-updates/**)",
+      "Bash(npm run make)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app\\out/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app\\out\\make\\squirrel.windows\\x64/**)",
+      "Read(/C:\\inetpub\\wwwroot\\electron-updates/**)"
     ],
     "deny": [],
     "ask": []

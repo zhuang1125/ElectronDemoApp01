@@ -46,6 +46,10 @@ function checkForUpdates() {
     url: 'http://localhost/electron-updates'
   });
   
+  // 设置自动更新选项
+  autoUpdater.autoDownload = false; // 不自动下载，让用户确认
+  autoUpdater.autoInstallOnAppQuit = false; // 退出时不自动安装
+  
   // IPC通信处理
   ipcMain.on('check-for-update', () => {
     autoUpdater.checkForUpdates();

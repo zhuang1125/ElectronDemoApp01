@@ -47,11 +47,24 @@ if (fileSize === '0') {
   }
 }
 
-// 生成latest.yml内容
+// 生成文件的sha512校验和
+const filePath = path.join(outputDir, filename);
+let sha512 = '';
+if (fs.existsSync(filePath)) {
+  const fileBuffer = fs.readFileSync(filePath);
+  sha512 = crypto.createHash('sha512').update(fileBuffer).digest('hex');
+}
+
+// 生成latest.yml内容（electron-updater需要的格式）
 const latestYml = `
 version: ${version}
+files:
+  - url: ${filename}
+    sha512: ${sha512}
+    size: ${actualFileSize}
 path: ${filename}
 sha256: ${sha256}
+sha512: ${sha512}
 size: ${actualFileSize}
 releaseDate: '${new Date().toISOString()}'
 `.trim();
