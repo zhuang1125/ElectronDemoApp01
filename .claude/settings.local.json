@@ -1,6 +1,19 @@
 {
   "permissions": {
     "allow": [
+      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)",
+      "Bash(npm install update-electron-app electron-updater)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app\\src/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app\\src/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app\\src/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app\\src/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app\\src/**)",
+      "Read(/D:\\repo\\demoapp2025090401\\my-app\\src/**)",
       "Read(/D:\\repo\\demoapp2025090401\\my-app/**)"
     ],
     "deny": [],
